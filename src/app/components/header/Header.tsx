@@ -2,11 +2,11 @@
 
 import { FC } from "react";
 import styled from "styled-components";
+import CartPopover from "../cart-popover/CartPopover";
 
 const Wrapper = styled.section`
   padding-top: 3em;
   padding-bottom:6em;
-  width: 35%;
 `;
 
 const DescriptionTitle = styled.h1`
@@ -16,11 +16,13 @@ const DescriptionTitle = styled.h1`
 const DescriptionText = styled.p`
   color: ${({ theme }) => `${theme.colors.lightGray}`};
   margin-top: 0;
+  width: 35%;
 `;
 
 const Header: FC = () => {
   return (
     <Wrapper>
+      <CartPopover />
       <DescriptionTitle>We sell stuff</DescriptionTitle>
       <DescriptionText>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
