@@ -4,5 +4,8 @@ export interface Icon {
     color?: string;
     onClick:() => void;
     className?: string; 
+    style?: { 
+      [key: string]: string;
+    }
   }
   

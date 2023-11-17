@@ -4,6 +4,7 @@ import { Product } from "@/models/product.interface";
 import { FC } from "react";
 import styled from "styled-components";
 import Button from "../buttons/Button";
+import useAddItem from "@/app/hooks/useAddItem";
 
 const Card = styled.div`
 text-align: center;
@@ -18,12 +19,17 @@ const Title = styled.h2`
 `
 
 const ProductCard: FC<{ product: Product }> = (props) => {
+
+  const { addItem } = useAddItem();
+  
   return (
     <Card>
       <Title>
         {props.product.name}
       </Title>
-        <Button>Add to Cart - 100$</Button>
+        <Button onClick={() => {
+                  addItem(props.product);
+                }}>Add to Cart - {props.product.price} $</Button>
     </Card>
   );
 };

@@ -2,7 +2,7 @@
 import { Icon } from "@/models/icon.interface";
 import { FC } from "react";
 
-const IconCart: FC<Icon> = ({ size = 18, onClick }) => {
+const IconCart: FC<Icon> = ({ size = 18, onClick, style }) => {
   return (
     <svg
       width={size}
@@ -12,6 +12,7 @@ const IconCart: FC<Icon> = ({ size = 18, onClick }) => {
       viewBox="0 0 18 20"
       fill="none"
       onClick={onClick}
+      style={style}
       
     >
       <path

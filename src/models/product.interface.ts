@@ -9,5 +9,6 @@ export interface Product {
     sku: string;
     inventory: {
         [key: string] : number
-    }
+    },
+    quantity?: number 
 }

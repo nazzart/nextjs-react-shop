@@ -11,6 +11,7 @@ const ActionButton = styled.button`
     border: none;
     padding: 14px;
     cursor: pointer;
+    border-radius: 4px;
 
     `
 const Button: React.FC<ButtonProps> = (props) => {
