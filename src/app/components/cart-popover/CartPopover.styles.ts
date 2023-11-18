@@ -29,6 +29,7 @@ export const Content = styled.div`
   right: 0px;
   width: 370px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 24px 0px;
+  border-radius: 4px;
   padding: 15px 20px;
 `;
 
@@ -40,7 +41,7 @@ export const CartContent = styled.div`
 export const IconWrapper = styled.div`
   position: relative;
   cursor: pointer;
-  padding-right: 25px;
+  margin-right: 25px;
 `;
 
 export const Badge = styled.div`

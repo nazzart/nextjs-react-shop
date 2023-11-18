@@ -5,7 +5,14 @@ import { FC } from "react";
 import Button from "../../buttons/Button";
 import useAddItem from "@/app/hooks/useAddItem";
 import Image from "next/image";
-import { Card, Description, ImageBlock, Title } from "./ProductCart.styles";
+import {
+  Card,
+  Description,
+  ImageBlock,
+  Meta,
+  Price,
+  Title,
+} from "./ProductCart.styles";
 
 const ProductCard: FC<{ product: Product }> = (props) => {
   const { addItem } = useAddItem();
@@ -21,7 +28,10 @@ const ProductCard: FC<{ product: Product }> = (props) => {
           sizes="100vw"
           style={{ width: "100%", height: "auto" }}
         />
-        <Description>{props.product.description}</Description>
+        <Meta>
+          <Description>{props.product.description}</Description>
+          <Price>$ {props.product.price}</Price>
+        </Meta>
       </ImageBlock>
 
       <Title>{props.product.name}</Title>

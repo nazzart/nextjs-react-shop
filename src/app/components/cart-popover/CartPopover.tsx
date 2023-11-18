@@ -4,15 +4,16 @@ import IconCart from "../icons/IconCart";
 import { Popover, Content, CartContent, Badge, IconWrapper } from "./CartPopover.styles";
 import CartBody from "../cart/cartBody/CartBody";
 import Button from "../buttons/Button";
-import Link from "next/link";
 import CartHeader from "../cart/cartHeader/CartHeader";
 import CartFooter from "../cart/cartFooter/CartFooter";
 import useCart from "@/app/hooks/useCart";
+import { useRouter } from 'next/navigation';
 
 const CartPopover: FC = () => {
   const { cartItems } = useCart();
   const [isOpen, setOpen] = useState<boolean>(false);
   const popoverElement = useRef<HTMLDivElement>(null);
+  const { push } = useRouter();
 
   const closeWhenClickOutside = (e: MouseEvent) => {
     if (
@@ -22,6 +23,11 @@ const CartPopover: FC = () => {
       setOpen(false);
     }
   };
+
+  const redirectTo = () => {
+    push('/cart');
+    setOpen(false)
+  }
 
   useEffect(() => {
     document.addEventListener("click", closeWhenClickOutside);
@@ -45,8 +51,8 @@ const CartPopover: FC = () => {
           {cartItems.length > 0 && (
             <>
               <CartFooter cartItems={cartItems} />
-              <Button>
-                <Link href="/cart">Next step</Link>
+              <Button onClick={() => redirectTo()}>
+                Next step
               </Button>
             </>
           )}
