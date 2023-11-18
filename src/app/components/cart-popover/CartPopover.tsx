@@ -1,26 +1,18 @@
 "use client";
 import { FC, useEffect, useRef, useState } from "react";
 import IconCart from "../icons/IconCart";
-import {
-  Popover,
-  Content,
-  MainTitle,
-  Meta,
-  Text,
-  ShippingPrice,
-  Total,
-} from "./CartPopover.styles";
+import { Popover, Content, CartContent, Badge, IconWrapper } from "./CartPopover.styles";
+import CartBody from "../cart/cartBody/CartBody";
+import Button from "../buttons/Button";
+import Link from "next/link";
+import CartHeader from "../cart/cartHeader/CartHeader";
+import CartFooter from "../cart/cartFooter/CartFooter";
 import useCart from "@/app/hooks/useCart";
-import Products from "../products/Products";
-import useRemoveItem from "@/app/hooks/useRemoveItem";
 
 const CartPopover: FC = () => {
-  const { removeItem } = useRemoveItem();
-
+  const { cartItems } = useCart();
   const [isOpen, setOpen] = useState<boolean>(false);
   const popoverElement = useRef<HTMLDivElement>(null);
-  const { cartItems } = useCart();
-  const [totalCost, setTotalCost] = useState<number>(0);
 
   const closeWhenClickOutside = (e: MouseEvent) => {
     if (
@@ -35,50 +27,27 @@ const CartPopover: FC = () => {
     document.addEventListener("click", closeWhenClickOutside);
   }, []);
 
-  useEffect(() => {
-    // calculate total cost of all the cart items
-    const totalCost = cartItems.reduce((result, item) => {
-      return item.price * item.quantity! + result;
-    }, 0);
-
-    setTotalCost(totalCost);
-  }, [cartItems]);
-
   return (
     <Popover ref={popoverElement} className={isOpen ? "active" : ""}>
-      <IconCart
-        size={24}
-        onClick={() => setOpen(!isOpen)}
-        style={{ cursor: "pointer" }}
-      />
+      <IconWrapper onClick={() => setOpen(!isOpen)}>
+        <IconCart
+          size={24}
+        />
+        {cartItems.length > 0 && <Badge>{cartItems.length}</Badge>}
+      </IconWrapper>
+      
       {isOpen && (
         <Content>
-          <MainTitle>Your cart ({cartItems.length})</MainTitle>
-          {cartItems.length < 1 ? (
-            <p>There are no items in your cart yet.</p>
-          ) : (
+          <CartHeader totalCount={cartItems.length} />
+          <CartContent>
+            <CartBody cartItems={cartItems} />
+          </CartContent>
+          {cartItems.length > 0 && (
             <>
-              {cartItems.map((item, id) => (
-                <div key={id}>
-                  {item.name}
-                  {item.quantity}
-                  <div onClick={() => removeItem(item)}>remove</div>
-                </div>
-              ))}
-              <Meta>
-                <Text>Subtotal</Text>
-                <Text>{totalCost} $</Text>
-              </Meta>
-              <Meta>
-                <Text>Shipping</Text>
-                <Text>
-                  <ShippingPrice>Calculated at the next step</ShippingPrice>
-                </Text>
-              </Meta>
-              <Total>
-                <Text>Total</Text>
-                <Text>{totalCost} $</Text>
-              </Total>
+              <CartFooter cartItems={cartItems} />
+              <Button>
+                <Link href="/cart">Next step</Link>
+              </Button>
             </>
           )}
         </Content>
