@@ -24,6 +24,7 @@ const CartItem: FC<{ item: Product }> = (props) => {
         alt={props.item.name}
         width={100}
         height={100}
+        priority={true}
       />
 
       <ItemContent>

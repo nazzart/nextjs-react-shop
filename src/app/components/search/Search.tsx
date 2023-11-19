@@ -26,7 +26,7 @@ const Search: FC<{products: Product[], onSearch:(res: Product[]) => void }> = ({
       onSearch(products)
     }
 
-  }, [keyword]);
+  }, [keyword, products, onSearch]);
 
   return (
     <SearchInput

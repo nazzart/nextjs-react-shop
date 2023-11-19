@@ -2,7 +2,7 @@
 export interface Icon {
     size?: number;
     color?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (event: React.MouseEvent<SVGSVGElement>) => void;
     className?: string; 
     style?: { 
       [key: string]: string;
