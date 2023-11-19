@@ -11,8 +11,10 @@ import {
   ItemPrice,
 } from "./CartItem.styles";
 import Image from "next/image";
+import formatPrice from "@/app/lib/formatPrice";
 
 const CartItem: FC<{ item: Product }> = (props) => {
+  // Remove item hook
   const { removeItem } = useRemoveItem();
 
   return (
@@ -28,7 +30,7 @@ const CartItem: FC<{ item: Product }> = (props) => {
         <Description>
           <ItemTitle>{props.item.name}</ItemTitle>
           <ItemQuantity>Quantity: {props.item.quantity}</ItemQuantity>
-          <ItemPrice>$ {props.item.price}</ItemPrice>
+          <ItemPrice>{formatPrice(props.item.price)}</ItemPrice>
         </Description>
         <RemoveButton onClick={() => removeItem(props.item)}>
           Remove

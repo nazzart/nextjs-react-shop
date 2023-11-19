@@ -3,9 +3,11 @@
 import { FC, useEffect, useState } from "react";
 import { Product } from "@/models/product.interface";
 import { Meta, ShippingPrice, Total, Text, Footer } from "./CartFooter.styles";
+import formatPrice from "@/app/lib/formatPrice";
 
 
 const CartFooter: FC<{ cartItems: Product[] }> = (props) => {
+  // Contains the total cost of all products
   const [totalCost, setTotalCost] = useState<number>(0);
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const CartFooter: FC<{ cartItems: Product[] }> = (props) => {
     <Footer>
       <Meta>
         <Text>Subtotal</Text>
-        <Text>{totalCost} $</Text>
+        <Text>{formatPrice(totalCost)}</Text>
       </Meta>
       <Meta>
         <Text>Shipping</Text>
@@ -31,7 +33,7 @@ const CartFooter: FC<{ cartItems: Product[] }> = (props) => {
       </Meta>
       <Total>
         <Text>Total</Text>
-        <Text>{totalCost} $</Text>
+        <Text>{formatPrice(totalCost)}</Text>
       </Total>
     </Footer>
   );

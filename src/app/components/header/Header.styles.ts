@@ -17,7 +17,7 @@ export const DescriptionTitle = styled.h1`
 export const DescriptionText = styled.p(
   ({ theme: { down, breakpoints, colors } }) => `
 
-  color: ${colors.lightGray};
+  color: ${colors.mediumGray};
   margin-top: 0;
   width: 35%;
 

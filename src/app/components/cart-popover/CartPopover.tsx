@@ -10,11 +10,19 @@ import useCart from "@/app/hooks/useCart";
 import { useRouter } from 'next/navigation';
 
 const CartPopover: FC = () => {
+  // Cart hook
   const { cartItems } = useCart();
+
+  // Contains boolean if popover is open
   const [isOpen, setOpen] = useState<boolean>(false);
+
+  // Reference to the popover html element
   const popoverElement = useRef<HTMLDivElement>(null);
+
+  // Include the router from navigation
   const { push } = useRouter();
 
+  // Method to close the popover if the user clicks outside of it
   const closeWhenClickOutside = (e: MouseEvent) => {
     if (
       popoverElement.current &&
@@ -24,11 +32,13 @@ const CartPopover: FC = () => {
     }
   };
 
+  // Redirect to cart page on button click
   const redirectTo = () => {
     push('/cart');
     setOpen(false)
   }
 
+  // Side effect, register the listener
   useEffect(() => {
     document.addEventListener("click", closeWhenClickOutside);
   }, []);
@@ -51,7 +61,7 @@ const CartPopover: FC = () => {
           {cartItems.length > 0 && (
             <>
               <CartFooter cartItems={cartItems} />
-              <Button onClick={() => redirectTo()}>
+              <Button color="secondary" onClick={() => redirectTo()}>
                 Next step
               </Button>
             </>

@@ -13,8 +13,10 @@ import {
   Price,
   Title,
 } from "./ProductCart.styles";
+import formatPrice from "@/app/lib/formatPrice";
 
 const ProductCard: FC<{ product: Product }> = (props) => {
+  // Hook to add products
   const { addItem } = useAddItem();
 
   return (
@@ -30,17 +32,19 @@ const ProductCard: FC<{ product: Product }> = (props) => {
         />
         <Meta>
           <Description>{props.product.description}</Description>
-          <Price>$ {props.product.price}</Price>
+          <Price>{formatPrice(props.product.price)}</Price>
         </Meta>
       </ImageBlock>
 
       <Title>{props.product.name}</Title>
       <Button
+        color="primary"
+        size="standart"
         onClick={() => {
           addItem(props.product);
         }}
       >
-        Add to Cart - {props.product.price} $
+        Add to Cart - {formatPrice(props.product.price)}
       </Button>
     </Card>
   );

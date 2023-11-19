@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 import { useServerInsertedHTML } from 'next/navigation'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
+/*
+  Function to use the styled-components on the server side.
+*/
 export default function StyledComponentsRegistry({
   children,
 }: {

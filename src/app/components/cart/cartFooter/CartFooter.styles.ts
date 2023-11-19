@@ -15,7 +15,7 @@ export const Text= styled.p`
 `;
 
 export const ShippingPrice = styled.span`
-  color: ${({ theme }) => `${theme.colors.lightGray}`};
+  color: ${({ theme }) => `${theme.colors.mediumGray}`};
 `;
 
 export const Total = styled.div`

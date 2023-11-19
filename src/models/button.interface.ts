@@ -1,5 +1,7 @@
 export interface ButtonProps {
-  type?: "submit" | "reset" | "button";
+  type?: "submit" | "button";
+  size?: "standart" | "large";
+  color: "primary" | "secondary";
   children?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }

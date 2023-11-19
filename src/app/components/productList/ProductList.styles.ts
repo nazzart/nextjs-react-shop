@@ -16,3 +16,5 @@ export const List = styled.div(
       }
   `
 );
+
+export const NotFoundText = styled.p``

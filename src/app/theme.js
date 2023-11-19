@@ -1,14 +1,19 @@
 "use client";
 
 import React from "react";
+import GlobalStyles from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 
+/*
+  Contains all definitions of the styles, fonts, breakpoints and etc.
+*/
 const theme = {
   colors: {
     black: "#000000",
     primary: "#0096FF",
     secondary: "#06B49A",
-    lightGray: "#999999",
+    lightGray: "#DDDDDD",
+    mediumGray: "#999999",
     white: "#FFFFFF",
   },
   fonts: ["sans-serif", "Roboto"],
@@ -37,7 +42,10 @@ const theme = {
 };
 
 const Theme = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    {children}
+    </ThemeProvider>
 );
 
 export default Theme;

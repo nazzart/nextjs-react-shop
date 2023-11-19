@@ -1,23 +1,12 @@
 import { Product } from "@/models/product.interface";
 import ProductList from "./components/productList/ProductList";
-
-async function getProducts() {
-  const res = await fetch('https://gist.githubusercontent.com/gfazioli/ccada69eed493842070a0b8945a0a771/raw/125d3ad87c470da8001a0b18d29703a5abd4d13f/products.json')
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-
-  const data: Product[] = await res.json();
-  return data;
-}
+import { getProducts } from "./api/products";
 
 export default async function Home() {
-
+  // Get list of products
   const products: Product[] = await getProducts();
 
-
-  return <>
-    <ProductList products={products} />
-  </>;
+  return (
+      <ProductList products={products} />
+  );
 }

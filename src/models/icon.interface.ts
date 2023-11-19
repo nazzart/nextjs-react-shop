@@ -2,7 +2,7 @@
 export interface Icon {
     size?: number;
     color?: string;
-    onClick?:() => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string; 
     style?: { 
       [key: string]: string;
