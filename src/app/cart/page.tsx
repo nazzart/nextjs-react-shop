@@ -12,7 +12,9 @@ export default function Cart() {
   return (
     <>
       <CartHeader totalCount={cartItems.length} />
-      <CartBody cartItems={cartItems} />
+      <div>
+        <CartBody cartItems={cartItems} />
+      </div>
       {cartItems.length > 0 && (
         <>
           <CartFooter cartItems={cartItems} />

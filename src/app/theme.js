@@ -27,7 +27,7 @@ const theme = {
     sm: "640px",
     md: "768px",
     lg: "1024px",
-    xl: "1280px"
+    xl: "1280px",
   },
   up: (breakpoint, vertical = false) =>
     `@media (min-${
@@ -45,7 +45,7 @@ const Theme = ({ children }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
     {children}
-    </ThemeProvider>
+  </ThemeProvider>
 );
 
 export default Theme;

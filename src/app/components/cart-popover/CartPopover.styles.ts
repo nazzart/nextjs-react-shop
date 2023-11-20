@@ -22,16 +22,23 @@ export const Popover = styled.div`
   }
 `;
 
-export const Content = styled.div`
-  position: absolute;
-  background: white;
-  top: 30px;
-  right: 0px;
-  width: 370px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 24px 0px;
-  border-radius: 4px;
-  padding: 15px 20px;
-`;
+export const Content = styled.div(
+  ({ theme: { down, breakpoints } }) => `
+
+    position: absolute;
+    background: white;
+    top: 30px;
+    right: 0px;
+    width: 370px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 24px 0px;
+    border-radius: 4px;
+    padding: 15px 20px;
+
+    ${down(breakpoints.sm)} {
+      width: 310px;
+    }
+`
+);
 
 export const CartContent = styled.div`
   max-height: 300px;

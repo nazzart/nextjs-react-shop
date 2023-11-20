@@ -34,8 +34,8 @@ const CartPopover: FC = () => {
 
   // Redirect to cart page on button click
   const redirectTo = () => {
-    push('/cart');
     setOpen(false)
+    push('/cart');
   }
 
   // Side effect, register the listener
@@ -45,7 +45,7 @@ const CartPopover: FC = () => {
 
   return (
     <Popover ref={popoverElement} className={isOpen ? "active" : ""}>
-      <IconWrapper onClick={() => setOpen(!isOpen)}>
+      <IconWrapper onClick={() => setOpen(!isOpen)} data-testid="icon-wrapper">
         <IconCart
           size={24}
         />
@@ -61,7 +61,7 @@ const CartPopover: FC = () => {
           {cartItems.length > 0 && (
             <>
               <CartFooter cartItems={cartItems} />
-              <Button color="secondary" onClick={() => redirectTo()}>
+              <Button color="secondary" onClick={() => redirectTo()} >
                 Next step
               </Button>
             </>

@@ -33,7 +33,7 @@ const CartItem: FC<{ item: Product }> = (props) => {
           <ItemQuantity>Quantity: {props.item.quantity}</ItemQuantity>
           <ItemPrice>{formatPrice(props.item.price)}</ItemPrice>
         </Description>
-        <RemoveButton onClick={() => removeItem(props.item)}>
+        <RemoveButton onClick={() => removeItem(props.item)} data-testid="remove-btn">
           Remove
         </RemoveButton>
       </ItemContent>
