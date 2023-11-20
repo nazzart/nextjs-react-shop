@@ -10,10 +10,10 @@ import CartItem from "@/app/components/cart/cartItem/CartItem";
 import { cartItems } from "./mocks/cartData";
 import userEvent from "@testing-library/user-event";
 
-const pushMock = jest.fn();
+const removeItemMock = jest.fn();
 jest.mock("src/app/hooks/useRemoveItem", () => ({
   __esModule: true,
-  default: () => ({ removeItem: pushMock }),
+  default: () => ({ removeItem: removeItemMock }),
 }));
 
 describe("CartItem", () => {
@@ -31,7 +31,7 @@ describe("CartItem", () => {
     await userEvent.click(button);
 
     await waitFor(() => {
-      expect(pushMock).toHaveBeenCalledWith(cartItems[0]);
+      expect(removeItemMock).toHaveBeenCalledWith(cartItems[0]);
       expect(itemName).not.toBeInTheDocument();
     });
   });

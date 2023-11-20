@@ -6,7 +6,7 @@ import { cartItems } from "./mocks/cartData";
 import CartHeader from "@/app/components/cart/cartHeader/CartHeader";
 
 describe("CartHeader", () => {
-  it("should display the number of cart items", async () => {
+  it("should display the number of cart items", () => {
 
     render(<ThemeProvider theme={mockTheme}>
         <CartHeader totalCount={cartItems.length}/>
@@ -17,7 +17,7 @@ describe("CartHeader", () => {
     expect(heading).toBeInTheDocument()
   });
 
-  it("should display (0) as number of cart items", async () => {
+  it("should display (0) as number of cart items", () => {
 
     render(<ThemeProvider theme={mockTheme}>
         <CartHeader totalCount={0}/>

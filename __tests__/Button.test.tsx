@@ -6,7 +6,7 @@ import Button from "@/app/components/buttons/Button";
 
 describe("Button", () => {
 
-  it("should receive the primary color", async () => {
+  it("should receive the primary color", () => {
 
     render(<ThemeProvider theme={mockTheme}>
         <Button color="primary">Hello</Button>
@@ -18,7 +18,7 @@ describe("Button", () => {
     expect(styles.backgroundColor).toBe('rgb(0, 150, 255)');
   });
 
-  it("should be displayed as large button", async () => {
+  it("should be displayed as large button", () => {
 
     render(<ThemeProvider theme={mockTheme}>
         <Button color="primary" size="large">Hello</Button>

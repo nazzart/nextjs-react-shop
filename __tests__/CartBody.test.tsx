@@ -6,7 +6,7 @@ import CartBody from "@/app/components/cart/cartBody/CartBody";
 
 describe("CartBody", () => {
 
-  it("should display the message: There are no items in your cart yet.", async () => {
+  it("should display the message: There are no items in your cart yet.", () => {
 
     render(<ThemeProvider theme={mockTheme}>
         <CartBody cartItems={[]}/>
