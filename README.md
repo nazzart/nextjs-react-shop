@@ -1,4 +1,5 @@
 The project goal was to create a simple example of the webshop, built with React / NextJS.
+Project was deployed with Vercel and is visible [here](https://nextjs-react-shop-theta.vercel.app/) 
 
 ## Tech used
 - [Next.js](https://nextjs.org/) / React
@@ -6,6 +7,7 @@ The project goal was to create a simple example of the webshop, built with React
 - [Typescript](https://www.typescriptlang.org/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Jest](https://jestjs.io/)
+- [Vercel](https://vercel.com/)
 
 ## Getting Started
 
