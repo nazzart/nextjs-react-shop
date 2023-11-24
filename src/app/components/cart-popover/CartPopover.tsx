@@ -1,7 +1,6 @@
 "use client";
-import { FC, useEffect, useRef, useState } from "react";
-import IconCart from "../icons/IconCart";
-import { Popover, Content, CartContent, Badge, IconWrapper } from "./CartPopover.styles";
+import { FC, useEffect, useRef } from "react";
+import { Popover, Content, CartContent } from "./CartPopover.styles";
 import CartBody from "../cart/cartBody/CartBody";
 import Button from "../buttons/Button";
 import CartHeader from "../cart/cartHeader/CartHeader";
@@ -9,12 +8,9 @@ import CartFooter from "../cart/cartFooter/CartFooter";
 import useCart from "@/app/hooks/useCart";
 import { useRouter } from 'next/navigation';
 
-const CartPopover: FC = () => {
+const CartPopover: FC<{onClose:(status: boolean) => void}> = (props) => {
   // Cart hook
   const { cartItems } = useCart();
-
-  // Contains boolean if popover is open
-  const [isOpen, setOpen] = useState<boolean>(false);
 
   // Reference to the popover html element
   const popoverElement = useRef<HTMLDivElement>(null);
@@ -28,13 +24,13 @@ const CartPopover: FC = () => {
       popoverElement.current &&
       !popoverElement.current.contains(e.target as Node)
     ) {
-      setOpen(false);
+      props.onClose(true);
     }
   };
 
   // Redirect to cart page on button click
   const redirectTo = () => {
-    setOpen(false)
+    props.onClose(true)
     push('/cart');
   }
 
@@ -44,15 +40,7 @@ const CartPopover: FC = () => {
   }, []);
 
   return (
-    <Popover ref={popoverElement} className={isOpen ? "active" : ""}>
-      <IconWrapper onClick={() => setOpen(!isOpen)} data-testid="icon-wrapper">
-        <IconCart
-          size={24}
-        />
-        {cartItems.length > 0 && <Badge>{cartItems.length}</Badge>}
-      </IconWrapper>
-      
-      {isOpen && (
+    <Popover ref={popoverElement} data-testid="cart-popover">
         <Content>
           <CartHeader totalCount={cartItems.length} />
           <CartContent>
@@ -67,7 +55,6 @@ const CartPopover: FC = () => {
             </>
           )}
         </Content>
-      )}
     </Popover>
   );
 };

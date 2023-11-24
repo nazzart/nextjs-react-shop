@@ -17,7 +17,7 @@ jest.mock("src/app/hooks/useRemoveItem", () => ({
 }));
 
 describe("CartItem", () => {
-  xit("should remove ", async () => {
+  it("should call the remove function", async () => {
     render(
       <ThemeProvider theme={mockTheme}>
         <CartItem item={cartItems[0]} />
@@ -28,11 +28,12 @@ describe("CartItem", () => {
     const itemName = screen.getByText(cartItems[0].name);
     expect(itemName).toBeInTheDocument();
 
-    await userEvent.click(button);
+    userEvent.click(button);
 
     await waitFor(() => {
       expect(removeItemMock).toHaveBeenCalledWith(cartItems[0]);
-      expect(itemName).not.toBeInTheDocument();
+      expect(removeItemMock).toHaveBeenCalledTimes(1);
     });
   });
 });
+

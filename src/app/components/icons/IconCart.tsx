@@ -13,7 +13,7 @@ const IconCart: FC<Icon> = ({ size = 18, onClick, style }) => {
       fill="none"
       onClick={onClick}
       style={style}
-      
+    
     >
       <path
         stroke="currentColor"
