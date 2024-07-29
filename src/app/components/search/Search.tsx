@@ -15,7 +15,7 @@ const Search: FC<{products: Product[], onSearch:(res: Product[]) => void }> = ({
       const query = keyword.toLowerCase();
       // Set a small timeout, in order to not trigger search on ever key stroke
       const delayDebounceFn = setTimeout(() => {
-          let res = products.filter(item => item.name.toLowerCase().includes(query));
+          let res = products.filter(item => item.title.toLowerCase().includes(query));
           
           onSearch(res)
       }, 1000);

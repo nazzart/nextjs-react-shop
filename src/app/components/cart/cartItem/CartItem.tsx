@@ -20,8 +20,8 @@ const CartItem: FC<{ item: Product }> = (props) => {
   return (
     <Item>
       <Image
-        src={"https://placehold.co/600x600?text=Image+Placeholder"}
-        alt={props.item.name}
+        src={props.item.thumbnail}
+        alt={props.item.title}
         width={100}
         height={100}
         priority={true}
@@ -29,7 +29,7 @@ const CartItem: FC<{ item: Product }> = (props) => {
 
       <ItemContent>
         <Description>
-          <ItemTitle>{props.item.name}</ItemTitle>
+          <ItemTitle>{props.item.title}</ItemTitle>
           <ItemQuantity>Quantity: {props.item.quantity}</ItemQuantity>
           <ItemPrice>{formatPrice(props.item.price)}</ItemPrice>
         </Description>

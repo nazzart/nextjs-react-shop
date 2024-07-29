@@ -1,14 +1,15 @@
+export interface Products {
+    products: Product[]
+}
+
 export interface Product {
     id: number;
-    name: string;
+    title: string;
     description: string;
     price: number;
-    image: string;
+    thumbnail: string;
     category: string;
     brand: string;
     sku: string;
-    inventory: {
-        [key: string] : number
-    },
     quantity?: number 
 }

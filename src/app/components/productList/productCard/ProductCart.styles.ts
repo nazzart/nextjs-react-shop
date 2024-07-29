@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   text-align: center;
+  margin-bottom: 35px;
 `;
 
 export const Meta = styled.div`

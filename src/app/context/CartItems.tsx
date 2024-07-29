@@ -1,6 +1,6 @@
 "use client"
 import { Product } from "@/models/product.interface";
-import { createContext, useState } from "react";
+import { FC, ReactNode, createContext, useState } from "react";
 
 interface CartItemsContext {
   cartItems: Product[];
@@ -9,10 +9,10 @@ interface CartItemsContext {
 
 export const CartItemsContext = createContext<CartItemsContext>({
   cartItems: [],
-  setCartItems: () => {},
+  setCartItems: (items: Product[]) => {}
 });
 
-export const CartItemsProvider = ({ children }: any) => {
+export const CartItemsProvider: FC<{children: ReactNode}> = ({ children }) => {
     const [cartItems, setCartItems] = useState<Product[]>([]);
     return (
       <CartItemsContext.Provider value={{ cartItems, setCartItems }}>

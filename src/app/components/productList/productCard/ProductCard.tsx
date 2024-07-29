@@ -23,12 +23,11 @@ const ProductCard: FC<{ product: Product }> = (props) => {
     <Card>
       <ImageBlock>
         <Image
-          src={"https://placehold.co/600x600?text=Image+Placeholder"}
-          alt={props.product.name}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: "100%", height: "auto" }}
+          src={props.product.thumbnail}
+          alt={props.product.title}
+          width={300}
+          height={300}
+          priority={true}
         />
         <Meta>
           <Description>{props.product.description}</Description>
@@ -36,7 +35,7 @@ const ProductCard: FC<{ product: Product }> = (props) => {
         </Meta>
       </ImageBlock>
 
-      <Title>{props.product.name}</Title>
+      <Title>{props.product.title}</Title>
       <Button
         color="primary"
         size="standart"
